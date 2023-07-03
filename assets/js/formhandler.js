@@ -17,8 +17,17 @@ window.addEventListener("DOMContentLoaded", function() {
 
   form.addEventListener("submit", function(ev) {
     ev.preventDefault();
-    var data = new FormData(form);
-    ajax(form.method, form.action, data, success, error);
+    button.innerHTML = "Sending...";
+    grecaptcha.ready(function() {
+      var siteKey = form.elements['captchaKey'].value;
+      grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
+          // Add your logic to submit to your backend server here.
+          form.elements['token'].value = token;
+          var data = new FormData(form);
+          ajax(form.method, form.action, data, success, error);
+      });
+    });
+
   });
 });
 
@@ -28,6 +37,7 @@ function ajax(method, url, data, success, error) {
   var xhr = new XMLHttpRequest();
   xhr.open(method, url);
   xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function() {
     if (xhr.readyState !== XMLHttpRequest.DONE) return;
     if (xhr.status === 200) {
@@ -36,5 +46,5 @@ function ajax(method, url, data, success, error) {
       error(xhr.status, xhr.response, xhr.responseType);
     }
   };
-  xhr.send(data);
+  xhr.send(JSON.stringify(Object.fromEntries(data)));
 }

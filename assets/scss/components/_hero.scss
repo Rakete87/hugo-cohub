@@ -1,20 +1,21 @@
 .hero {
-  padding: 250px 0 200px;
+  margin-top: 65px;
+  padding: 300px 0 0px;
   position: relative;
   background-position: center;
   background-size: cover;
 
   @include desktop-lg {
-    padding: 150px 0 120px;
+    padding: 200px 0 120px;
   }
   @include desktop {
     padding: 200px 0 120px;
   }
   @include tablet {
-    padding: 150px 0 100px;
+    padding: 250px 0 100px;
   }
   @include mobile {
-    padding: 120px 0 80px;
+    padding: 220px 0 80px;
   }
 
   &::after {
@@ -24,7 +25,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba($color: $black, $alpha: 0.5);
   }
 
   &-content {
@@ -66,58 +66,6 @@
       @include mobile {
         margin: 0;
       }
-    }
-  }
-
-  &-video-player {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    flex-direction: column;
-
-    @include desktop {
-      margin-top: 60px;
-    }
-    @include mobile {
-      margin-top: 30px;
-    }
-    .hero-video-player-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      a {
-        display: block;
-        position: relative;
-        background: $white;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        color: $black;
-        margin-bottom: 20px;
-        transition: 0.3s ease-in-out;
-
-        &:hover {
-          transform: scale(1.2);
-          i {
-            color: $primary-color;
-            font-size: 20px;
-          }
-        }
-        i {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          transition: all 0.3s ease-in-out;
-        }
-      }
-    }
-
-    span {
-      color: $white;
-      font-family: $primary-font;
     }
   }
 }

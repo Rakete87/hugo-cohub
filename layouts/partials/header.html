@@ -1,6 +1,6 @@
 <!-- Mark up for Site Navigation Section-->
 <header class="header">
-  <nav class="main-nav navbar navbar-expand-lg {{ if not $.IsHome }}main-nav-colored{{ end }}">
+  <nav class="main-nav navbar navbar-expand-lg nav-bg {{ if not $.IsHome }}main-nav-colored{{ end }}">
     <div class="container-fluid">
       <a href="{{.Site.BaseURL}}" class="navbar-brand">
         <img src="{{ .Site.Params.logo | absURL}}" alt="site-logo" />

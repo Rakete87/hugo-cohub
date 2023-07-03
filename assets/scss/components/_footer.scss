@@ -1,5 +1,5 @@
 .footer {
-  padding: 100px 0;
+  padding: 50px 0;
   background: #f7f8fc;
   @include desktop {
     padding: 50px 0;
@@ -8,6 +8,13 @@
 
   @include tablet {
     text-align: center;
+  }
+
+  .footer-title {
+    text-align: left;
+    @include tablet {
+      padding: 0 0 30px 25px;
+    }  
   }
 
   &-logo {
