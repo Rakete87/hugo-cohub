@@ -6,18 +6,18 @@ window.addEventListener("DOMContentLoaded", function() {
   function success() {
     form.reset();
     button.style = "display: none ";
-    status.innerHTML = "Thanks! Contact form is submitted successfully.";
+    status.innerHTML = "Danke! Das Kontaktformular wurde erfolgreich übermittelt.";
   }
 
   function error() {
-    status.innerHTML = "Oops! There was a problem.";
+    status.innerHTML = "Hoppla! Beim Absenden der Formulardaten ist ein Problem aufgetreten.";
   }
 
   // handle the form submission event
 
   form.addEventListener("submit", function(ev) {
     ev.preventDefault();
-    button.innerHTML = "Sending...";
+    button.innerHTML = "Senden läuft...";
     grecaptcha.ready(function() {
       var siteKey = form.elements['captchaKey'].value;
       grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
