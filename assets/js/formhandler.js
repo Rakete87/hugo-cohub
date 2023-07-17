@@ -14,21 +14,22 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   // handle the form submission event
-
-  form.addEventListener("submit", function(ev) {
-    ev.preventDefault();
-    button.innerHTML = "Senden läuft...";
-    grecaptcha.ready(function() {
-      var siteKey = form.elements['captchaKey'].value;
-      grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
-          // Add your logic to submit to your backend server here.
-          form.elements['token'].value = token;
-          var data = new FormData(form);
-          ajax(form.method, form.action, data, success, error);
+  if (form) {
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      button.innerHTML = "Senden läuft...";
+      grecaptcha.ready(function() {
+        var siteKey = form.elements['captchaKey'].value;
+        grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
+            // Add your logic to submit to your backend server here.
+            form.elements['token'].value = token;
+            var data = new FormData(form);
+            ajax(form.method, form.action, data, success, error);
+        });
       });
-    });
 
-  });
+    });
+  }  
 });
 
 // helper function for sending an AJAX request
