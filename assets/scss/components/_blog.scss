@@ -107,14 +107,15 @@
 }
 
 .quote {
-  margin: 0;
+  margin: 0 auto 45px auto;
   background: #eee;
   padding: 1em 3em;
   border-radius: 1em;
-  margin-bottom: 45px;
+  width: max-content;
+  max-width: 100%;
 }
 .quote blockquote {
-  margin: 1em 2em;
+  margin: 0;
   font-style: italic;
   text-align: center;
   font-size: 1.2em;
