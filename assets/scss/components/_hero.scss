@@ -1,6 +1,6 @@
 .hero {
-  margin-top: 65px;
-  padding: 300px 0 0px;
+  margin-top: 63px;
+  padding: 400px 0 0px;
   position: relative;
   background-position: center;
   background-size: cover;
@@ -68,4 +68,12 @@
       }
     }
   }
+}
+
+.hero.medium-height {
+  padding: 300px 0 0px;
+}
+
+.hero.mini-height {
+  padding: 200px 0 0px;
 }
