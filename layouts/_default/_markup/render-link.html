@@ -1,1 +1,1 @@
-<a href="{{ .Destination }}" {{ with .Title }} title="{{ . }}"{{ end }} {{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text }}</a>
+<a href="{{ .Destination }}" {{ with .Title }} title="{{ . }}"{{ end }} {{ if or (strings.HasPrefix .Destination "http") (strings.HasPrefix .Destination "/docs/") }} target="_blank"{{ end }}>{{ .Text }}</a>
