@@ -86,9 +86,18 @@
     font-size:0.95rem;
     padding-bottom: 12px;
     padding-top: 0;
+    text-indent: -9999px;
+    background-image: url(/images/logo.png);
+    display: block;
+    width: 350px;
+    height: 38px;
+    margin-top: -10px;
+    margin-left: -18px;
 
     @media (max-width: 575px) {
       padding-bottom: 0;
+      margin-top: 0px;
+      margin-left: -5px;
     }
 
     .logo-main {
