@@ -84,12 +84,17 @@
 
   .navbar-brand {
     font-size:0.95rem;
+    line-height: 36px;
+    color: #252525;
+    font-weight:bolder;
     padding-bottom: 12px;
     padding-top: 0;
-    text-indent: -9999px;
-    background-image: url(/images/logo.png);
+    padding-left: 45px;
+    background-image: url(/images/logo-compass.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 10px 11px;
     display: block;
-    width: 350px;
     height: 38px;
     margin-top: -10px;
     margin-left: -18px;
@@ -98,8 +103,6 @@
       padding-bottom: 0;
       margin-top: 0px;
       margin-left: -5px;
-      background-image: url(/images/logo-small.png);
-      width: 268px;
     }
 
     .logo-main {
