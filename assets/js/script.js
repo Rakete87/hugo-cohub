@@ -1,235 +1,39 @@
 $(document).ready(function () {
-  "use strict";
-  //Copyright Date
-  // var newYear = document.getElementById("newYear");
-  // newYear.innerHTML = new Date().getFullYear();
-  
-  // Scroll to top
-  $("a[href='#top']").click(function () {
-    $("html, body").animate(
-      {
-        scrollTop: 0,
-      },
-      "slow"
-    );
-    return false;
-  });
-
-  // Smooth scroll
-  $("a.scroll-to").on("click", function (event) {
-    $("html, body")
-      .stop()
-      .animate(
+    "use strict";
+    //Copyright Date
+    // var newYear = document.getElementById("newYear");
+    // newYear.innerHTML = new Date().getFullYear();
+    
+    // Scroll to top
+    $("a[href='#top']").click(function () {
+      $("html, body").animate(
         {
-          scrollTop: $(this.hash).offset().top - 50,
+          scrollTop: 0,
         },
-        1000
+        "slow"
       );
-    event.preventDefault();
-    if (screen.width < 992) {
-      $(".navbar-toggler").click();
-    }
+      return false;
+    });
+  
+    // Smooth scroll
+    $("a.scroll-to").on("click", function (event) {
+      $("html, body")
+        .stop()
+        .animate(
+          {
+            scrollTop: $(this.hash).offset().top - 50,
+          },
+          1000
+        );
+      event.preventDefault();
+      if (screen.width < 992) {
+        $(".navbar-toggler").click();
+      }
+    });
+  
+    // AOS initialize
+    AOS.init({
+      disable: "mobile",
+    });
+  
   });
-
-  // AOS initialize
-  AOS.init({
-    disable: "mobile",
-  });
-
-});
-
-// G-Map
-/**
- * Created by Kausar on 06/10/2016.
- */
- window.marker = null;
-
- function initialize() {
-   var map;
-   var lat = $("#map").data("lat");
-   var long = $("#map").data("long");
-   console.log(lat, long);
-   var mapCenter = new google.maps.LatLng(lat, long);
-   var style = [
-    {
-        "featureType": "all",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#202c3e"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "gamma": 0.01
-            },
-            {
-                "lightness": 20
-            },
-            {
-                "weight": "1.39"
-            },
-            {
-                "color": "#ffffff"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.text.stroke",
-        "stylers": [
-            {
-                "weight": "0.96"
-            },
-            {
-                "saturation": "9"
-            },
-            {
-                "visibility": "on"
-            },
-            {
-                "color": "#000000"
-            }
-        ]
-    },
-    {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 30
-            },
-            {
-                "saturation": "9"
-            },
-            {
-                "color": "#29446b"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "saturation": 20
-            }
-        ]
-    },
-    {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 20
-            },
-            {
-                "saturation": -20
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "lightness": 10
-            },
-            {
-                "saturation": -30
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#193a55"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "saturation": 25
-            },
-            {
-                "lightness": 25
-            },
-            {
-                "weight": "0.01"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "lightness": -20
-            }
-        ]
-    }
-  ];
-   var mapOptions = {
-     // SET THE CENTER
-     center: mapCenter,
-     // SET THE MAP STYLE & ZOOM LEVEL
-     mapTypeId: google.maps.MapTypeId.ROADMAP,
-     // REMOVE ALL THE CONTROLS EXCEPT ZOOM
-     zoom: 13,
-     panControl: false,
-     scrollwheel: false,
-     zoomControl: true,
-     mapTypeControl: false,
-     scaleControl: false,
-     streetViewControl: false,
-     overviewMapControl: false,
-     zoomControlOptions: {
-       style: google.maps.ZoomControlStyle.LARGE,
-     },
-   };
- 
-   map = new google.maps.Map(document.getElementById("map"), mapOptions);
-   // SET THE MAP TYPE
-   var mapType = new google.maps.StyledMapType(style, {
-     name: "Grayscale",
-   });
-   map.mapTypes.set("grey", mapType);
-   map.setMapTypeId("grey");
-   //CREATE A CUSTOM PIN ICON
-   var marker_image = $("#map").data("pin");
-   var pinIcon = new google.maps.MarkerImage(
-     marker_image,
-     null,
-     null,
-     null
-   );
-   marker = new google.maps.Marker({
-     position: mapCenter,
-     map: map,
-     icon: pinIcon,
-     title: "Praxis Katherine Jung",
-   });
- }
- 
- if ($("#map").length > 0) {
-   google.maps.event.addDomListener(window, "load", initialize);
- }
- 

@@ -49,8 +49,6 @@
 {{ "<!-- Non Critical CSS -->" | safeHTML }}
 {{$style :=  resources.Get "scss/non-critical.scss" | resources.ToCSS | resources.Minify }}
 <link href="{{ $style.Permalink }}" rel="stylesheet" />
-<script src="https://maps.googleapis.com/maps/api/js?key={{ .Site.Params.Map.APIkey }}&libraries=geometry">
-</script>
 {{ "<!-- VENDOR JS -->" | safeHTML }}
 <script src="{{"vendor/jQuery/jquery.min.js" | absURL }}"></script>
 <script src="{{"vendor/bootstrap/bootstrap.min.js" | absURL }}"></script>
@@ -58,7 +56,6 @@
 <script src="{{"vendor/aos/aos.js" | absURL}}"></script>
 <script src="{{"vendor/match-height/match-height.js" | absURL}}"></script>
 <script src="{{"vendor/magnific-popup/magnific-popup.min.js" | absURL}}"></script>
-<script src="{{"vendor/g-map/gmap.js" | absURL}}"></script>
 <!-- {{ $formhandler := resources.Get "js/formhandler.js" | minify}} 
 <script src="{{ $formhandler.Permalink}}"></script> -->
 {{ $script := resources.Get "js/script.js" | minify}} 

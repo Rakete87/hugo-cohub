@@ -53,22 +53,31 @@
       }
     }
   }
-  #map {
-    height: 100%;
 
-    @include desktop {
-      height: 400px;
-    }
-    @include tablet {
-      height: 400px;
-    }
-    @include mobile {
-      height: 300px;
-    }
-    @include mobile-xs {
-      height: 250px;
-    }
+  .iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
+
+  @media (max-width: 575px) {
+    .iframe-container {
+      height: 300px;
+    }  
+  }
+
+  /* Then style the iframe to fit in the container div with full height and width */
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   &-section {
     padding: 40px 0 40px 0;
     @include mobile {

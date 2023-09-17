@@ -83,10 +83,10 @@
   }
 
   .navbar-brand {
-    font-size:0.95rem;
-    line-height: 36px;
+    font-size:1rem;
+    line-height: 54px;
     color: #252525;
-    font-weight:bolder;
+    font-weight:520;
     padding-bottom: 12px;
     padding-top: 0;
     padding-left: 45px;
@@ -95,12 +95,13 @@
     background-attachment: fixed;
     background-position: 10px 11px;
     display: block;
-    height: 38px;
+    height: 54px;
     margin-top: -10px;
     margin-left: -18px;
 
     @media (max-width: 575px) {
       padding-bottom: 0;
+      padding-left: 60px;
       margin-top: 0px;
       margin-left: -5px;
     }
@@ -218,5 +219,12 @@
   &-colored {
     @extend .nav-bg;
     box-shadow: none;
+  }
+}
+
+@media(max-width: 575px) {
+  .main-nav.nav-bg,.main-nav.main-nav-colored {
+      top:10px;
+      padding: 10px 20px;
   }
 }
