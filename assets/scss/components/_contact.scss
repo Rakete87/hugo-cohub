@@ -58,14 +58,14 @@
     background-image: url(/images/static-map.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 100%;
+    background-size: 160%;
     min-height: 300px;
     background-color: #1f2c3e;
   }
   
   @include mobile {
     #static-map {
-      background-size: 140%;  
+      background-size: 170%;  
     }  
   }
 
