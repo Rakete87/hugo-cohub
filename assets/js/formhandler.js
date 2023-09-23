@@ -31,6 +31,7 @@ window.addEventListener("DOMContentLoaded", function() {
   function captchaLoadSuccess(response) {
     var responseData = JSON.parse(response)
     form.elements['code'].value = responseData.code;
+    form.elements['verify'].selectedIndex = 0;
     captchaImg.src = responseData.visual_aid;
     captchaAudio.src = responseData.audio_aid;
   }
