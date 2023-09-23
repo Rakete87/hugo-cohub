@@ -92,13 +92,14 @@
     padding-left: 45px;
     background-image: url(/images/logo-compass.png);
     background-repeat: no-repeat;
-    background-position: 10px 11px;
+    background-position: 1px 9px;
     display: block;
     height: 54px;
     margin-top: -10px;
     margin-left: -18px;
 
     @media (max-width: 575px) {
+      background-position: 10px 11px;
       padding-bottom: 0;
       padding-left: 60px;
       margin-top: 0px;
