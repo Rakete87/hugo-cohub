@@ -106,11 +106,33 @@
         margin-bottom: 30px;
       }
       select.form-control {
-        padding: 5px;
+        padding: 15px;
+        color: #495057;
+      }
+
+      select.form-control[value=""] {
+        color: #6c757d;
+      }
+
+      select.form-control::selection {
+        color: #495057;
+      }  
+
+      select.form-control.cool {
+        height: auto;
+      }  
+
+      img.form-spamschutz-img {
+        border: solid 1px #ced4da;
+        border-radius: 10%;
+        width: 100%;
       }
 
       #contact-form-status {
         padding: 15px;
+        font-size: larger;
+        text-align: center;
+        width: 100%;
       }
     }
   }

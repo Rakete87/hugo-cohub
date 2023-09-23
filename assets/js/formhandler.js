@@ -2,32 +2,55 @@ window.addEventListener("DOMContentLoaded", function() {
   var form = document.getElementById("contact-form");
   var button = document.getElementById("contact-form-button");
   var status = document.getElementById("contact-form-status");
+  var captchaImg = document.getElementById('spamschutz');
+  var captchaAudio = document.getElementById('spamschutzAudio');
 
-  function success() {
+  function formSubmitSuccess() {
     form.reset();
-    button.style = "display: none ";
     status.innerHTML = "Danke! Das Kontaktformular wurde erfolgreich übermittelt.";
+    button.innerHTML = "Senden";
   }
 
-  function error() {
-    status.innerHTML = "Hoppla! Beim Absenden der Formulardaten ist ein Problem aufgetreten.";
+  function formSubmitError(errorCode, response) {
+    var responseData = JSON.parse(response)
+    console.log(responseData)
+    if (responseData.error == "captcha verify failed") {
+      status.innerHTML = "Spamschutz-Überprüfung fehlgeschlagen. Bitte versuche es erneut";
+    } else {
+      status.innerHTML = "Hoppla! Beim Absenden der Formulardaten ist ein Problem aufgetreten. Bitte versuche es erneut";
+    }
+    button.innerHTML = "Senden";
   }
 
-  // handle the form submission event
+  function captchaLoadSuccess(response) {
+    var responseData = JSON.parse(response)
+    form.elements['code'].value = responseData.code;
+    captchaImg.src = responseData.visual_aid;
+    captchaAudio.src = responseData.audio_aid;
+  }
+
+  function captchaLoadError() {
+    status.innerHTML = "Hoppla! Der Anti-Spam-Schutz konnte nicht initialisiert werden.";
+  }
+  
+  if (captchaImg) {
+    captchaImg.addEventListener('click', function() {
+      captchaAudio.play();
+    });
+  }
+
   if (form) {
+    // load captcha
+    var data = new FormData(form);
+    ajax('GET', 'https://fdv3wodlk2mtxhxnyqdmtneybi0peaol.lambda-url.eu-central-1.on.aws/', data, captchaLoadSuccess, captchaLoadError);
+
+    // handle the form submission event
     form.addEventListener("submit", function(ev) {
       ev.preventDefault();
       button.innerHTML = "Senden läuft...";
-      grecaptcha.ready(function() {
-        var siteKey = form.elements['captchaKey'].value;
-        grecaptcha.execute(siteKey, {action: 'submit'}).then(function(token) {
-            // Add your logic to submit to your backend server here.
-            form.elements['token'].value = token;
-            var data = new FormData(form);
-            ajax(form.method, form.action, data, success, error);
-        });
-      });
 
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, formSubmitSuccess, formSubmitError);
     });
   }  
 });
