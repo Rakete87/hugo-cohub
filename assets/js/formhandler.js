@@ -16,10 +16,16 @@ window.addEventListener("DOMContentLoaded", function() {
     console.log(responseData)
     if (responseData.error == "captcha verify failed") {
       status.innerHTML = "Spamschutz-Überprüfung fehlgeschlagen. Bitte versuche es erneut";
+      loadCaptcha();
     } else {
       status.innerHTML = "Hoppla! Beim Absenden der Formulardaten ist ein Problem aufgetreten. Bitte versuche es erneut";
     }
     button.innerHTML = "Senden";
+  }
+
+  function loadCaptcha() {
+    var data = new FormData(form);
+    ajax('GET', 'https://fdv3wodlk2mtxhxnyqdmtneybi0peaol.lambda-url.eu-central-1.on.aws/', data, captchaLoadSuccess, captchaLoadError);
   }
 
   function captchaLoadSuccess(response) {
@@ -40,9 +46,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   if (form) {
-    // load captcha
-    var data = new FormData(form);
-    ajax('GET', 'https://fdv3wodlk2mtxhxnyqdmtneybi0peaol.lambda-url.eu-central-1.on.aws/', data, captchaLoadSuccess, captchaLoadError);
+    loadCaptcha();
 
     // handle the form submission event
     form.addEventListener("submit", function(ev) {
