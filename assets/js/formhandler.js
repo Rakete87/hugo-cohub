@@ -9,13 +9,14 @@ window.addEventListener("DOMContentLoaded", function() {
     form.reset();
     status.innerHTML = "Danke! Das Kontaktformular wurde erfolgreich übermittelt.";
     button.innerHTML = "Senden";
+    loadCaptcha();
   }
 
   function formSubmitError(errorCode, response) {
     var responseData = JSON.parse(response)
     console.log(responseData)
     if (responseData.error == "captcha verify failed") {
-      status.innerHTML = "Spamschutz-Überprüfung fehlgeschlagen. Bitte versuche es erneut";
+      status.innerHTML = "Spamschutz Überprüfung fehlgeschlagen. Bitte versuche es erneut";
       loadCaptcha();
     } else {
       status.innerHTML = "Hoppla! Beim Absenden der Formulardaten ist ein Problem aufgetreten. Bitte versuche es erneut";
