@@ -55,17 +55,17 @@
   }
 
   #static-map {
-    background-image: url(/images/static-map.jpg);
+    background-image: url(/images/static-map-v2.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 160%;
+    background-size: 100%;
     min-height: 300px;
     background-color: #1f2c3e;
   }
   
   @include mobile {
     #static-map {
-      background-size: 170%;  
+      background-size: 120%;  
     }  
   }
 
@@ -136,4 +136,3 @@
     }
   }
 }
-
