@@ -14,7 +14,7 @@
     {{hugo.Generator}}
     {{ "<!-- Critical CSS -->" | safeHTML }}
     {{$style :=  resources.Get "scss/critical.scss" | resources.ToCSS | resources.Minify }}
-    <link href="{{ $style.Permalink }}" rel="stylesheet" />
+    <link href="{{ $style.Permalink }}?v={{ .Now.Unix }}" rel="stylesheet" />
   
 
     {{"<!-- Favicon -->" | safeHTML}}
